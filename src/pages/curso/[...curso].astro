@@ -2,7 +2,7 @@
 import { getEntry } from "astro:content";
 const { curso } = Astro.params;
 
-export const prerender = false;
+
 
 if (curso === undefined) {
   throw new Error("Slug es requerido");
