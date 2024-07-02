@@ -45,7 +45,6 @@ const allFormats = formats.map((format) => ({
 const imagePath = allFormats[0].url; // Reemplaza con la ruta de tu imagen local
 
 const dimensions = getImageDimensions('/img/'+imagePath);
-console.log(dimensions);
 
 ---
 
@@ -56,6 +55,7 @@ console.log(dimensions);
         classes,
     ]}
     style="position: relative"
+   
     {...attrs}
 >
     {
@@ -64,8 +64,9 @@ console.log(dimensions);
         ))
     }
     <img
-        width={dimensions.width}
-        height={dimensions.height}
+        id="myImage"
+        style=`aspect-ratio : ${dimensions.width} / ${dimensions.height}`
+        
         src={`/img/placeholder_${placeholder}`}
         class:list={['placeholder',Picture.variants.aspectRatio[aspectRatio], classImg]}
         {alt}
@@ -94,7 +95,7 @@ console.log(dimensions);
     
 </style>
 
- <script>
+  <script>
     const lazyImages = document.querySelectorAll(".lazy-picture");
 
     const observer = new IntersectionObserver(
@@ -110,7 +111,7 @@ console.log(dimensions);
                     
                     sources.forEach((source) => {
                         newImage.srcset = source.dataset.srcset;
-                        console.log(source.dataset.srcset);
+                      
                     });
 
                     picture.appendChild(newImage);
@@ -131,3 +132,19 @@ console.log(dimensions);
         observer.observe(lazyImage);
     });
 </script> 
+
+
+<script>
+    const image = document.getElementById('myImage');
+
+    // Function to log the dimensions of the image
+    function logDimensions() {
+        console.log(`Width: ${image.clientWidth}px, Height: ${image.clientHeight}px`);
+    }
+
+    image.addEventListener('loadstart', logDimensions);
+
+    image.addEventListener('load', logDimensions);
+    
+    logDimensions();
+</script>
