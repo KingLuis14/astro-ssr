@@ -1,5 +1,6 @@
 ---
 import type { HTMLAttributes } from "astro/types";
+import { getImageDimensions } from '../../utils/dimesion-Images.ts';
 
 interface Image {
     placeholder: string;
@@ -40,6 +41,12 @@ const allFormats = formats.map((format) => ({
     url: `${imgName}.${format}`,
     type: format,
 }));
+
+const imagePath = allFormats[0].url; // Reemplaza con la ruta de tu imagen local
+
+const dimensions = getImageDimensions('/img/'+imagePath);
+console.log(dimensions);
+
 ---
 
 <picture
@@ -57,6 +64,8 @@ const allFormats = formats.map((format) => ({
         ))
     }
     <img
+        width={dimensions.width}
+        height={dimensions.height}
         src={`/img/placeholder_${placeholder}`}
         class:list={['placeholder',Picture.variants.aspectRatio[aspectRatio], classImg]}
         {alt}
@@ -85,7 +94,7 @@ const allFormats = formats.map((format) => ({
     
 </style>
 
-<script>
+ <script>
     const lazyImages = document.querySelectorAll(".lazy-picture");
 
     const observer = new IntersectionObserver(
@@ -121,4 +130,4 @@ const allFormats = formats.map((format) => ({
     lazyImages.forEach((lazyImage) => {
         observer.observe(lazyImage);
     });
-</script>
+</script> 
