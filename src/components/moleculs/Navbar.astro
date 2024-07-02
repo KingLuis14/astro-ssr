@@ -1,0 +1,20 @@
+---
+
+import { getCollection } from "astro:content";
+const coleccition = await getCollection('curso');
+
+---
+
+<header>
+    <nav>
+        <ul>
+            {
+                coleccition.map(({data})=> (
+                    <li>
+                        <a href={`/curso/${data.id}`}>{data.id}</a>
+                    </li>
+                ))
+            }
+        </ul>
+    </nav>
+</header>

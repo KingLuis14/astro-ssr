@@ -7,9 +7,12 @@
         "base64": "data:image/webp;base64,UklGRgIBAABXRUJQVlA4TPUAAAAvCUABAN/BKrZtJXPuve/hEoE2ZCcLf25XarBtJElR390z8+cfFVpvvskMbBtJUjR398zoYXKf56fzFjPN/MdEs6aQASidvJaMwsQyr0qY6LdAgP4OsifkXVh6ilSDiKArhSQfNfx7+DI09+f3PaMlZcMG/yM4kk+mDr9z6GVOrlcWoTuZ6AuenVTfNUaoxlZ/Prole361blmWztkRHpfOp/8xyPa4ylEArP04ktZqoANs5+6f6PF7c98CwwAAi2aHbNu2XUT/oxjKqp5eg/9lJWpaLzBVm6X0rk+yJQ4FThq3/cx9VyRpYp2143oYDO/UsdAHAAA=",
         "imagen": "basedatos-banner"
     },
-    "imagenes": {
-        "base64": "Base-de-datos.webp",
-        "original": {
+    "images": {
+        "placeholder" : {
+            "imgName": "Base-de-datos",
+            "formats": "webp"
+        },
+        "original" : {
             "imgName": "Base-de-datos",
             "alt": "imagen de about 1",
             "formats": [

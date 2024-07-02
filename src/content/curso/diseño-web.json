@@ -7,15 +7,16 @@
         "base64": "data:image/webp;base64,UklGRsYAAABXRUJQVlA4TLoAAAAvCQABAH+hoI0kZW/u0cv7t8Zgg4EkSYZ2evds3/3/fTZn2Lht5Mj2zO5dmcr7//uu2xzmP6QwWSARB/EAik44eXByiN0SiEQkJgi+BQ6H11SagIlY0PBgEuSLwXGJl4fu2m70wWH5LI+njS3avzVPvbuQRpQRQm1NCh+SNaC7fXZuf4pVKBrseoGBJEmGk7P22bYR0f8wdn3+6y2m2GPb+d3HXiU+XepyxADg5Nw3adgNXBMRRHnWKgQ=",
         "imagen": "disenoweb-banner"
     },
-    "imagenes": {
-        "base64": "Diseno-Web.webp",
-        "original": {
-            "imgName": "Diseno-Web",
+    "images": {
+        "placeholder" : {
+            "imgName": "Diseño-Web",
+            "formats": "webp"
+        },
+        "original" : {
+            "imgName": "Diseño-Web",
             "alt": "imagen de about 1",
             "formats": [
-                
-                "webp",
-                "avif"
+                "webp"
             ]
         }
     },

@@ -1,0 +1,156 @@
+{
+    "id": "ofimatica",
+    "titulo": "Ofimatica Básica",
+    "descripcion": "Aprenda habilidades esenciales de Microsoft Office, incluyendo Word, Excel y PowerPoint. Certificación al completar el curso que mejora las perspectivas laborales.",
+    "url": "/ofimatica",
+    "imagenesBanner": {
+      "base64": "data:image/webp;base64,UklGRjoBAABXRUJQVlA4TC0BAAAvCYABAC/CRgAAFbrb2vGB/AqfthkZu02n+Ybr2rbN6sS29ZVa1G8qSAl5tm0bbAMAQKG7e2dt/l84xNTdzfyHDnb/ejo2M/Sey3uAIwfouELiTSIiQN6GlfxZyu7+Hzz89ikRSlgVL9LdpUB7GkAhakAhHgx0QdD4BzzqzL/JfC0w4e27tP7q6YXTcKVtQWMvWseHxt8SiZDDBMhOl7b5bQ12FNNgJRggGLH8gvoyiiAgaU+SaKSXKv+djzzs7811+30txA0g4fO6MsV4vdTLFYdmqulEabcCEzaPHX1gEcDzAybtt7IoBgcBAJBteLZt28bNiP5H8k0/2fUYLUdTFaF+3zvjh4AQLMpU22wBa5bS49UPO/D8Vxy/zssUuV580xkcQ0M/v5wFSRM2AA==",
+      "imagen": "ofimatica-banner"
+    },
+    "images": {
+      "placeholder": {
+        "imgName": "ofimatica",
+        "formats": "webp"
+      },
+      "original": {
+        "imgName": "ofimatica",
+        "alt": "imagen de about 1",
+        "formats": [
+          "webp"
+        ]
+      }
+    },
+    "modulos": [
+      {
+        "id": "Microsoft Word",
+        "semanas": [
+          {
+            "temas": [
+              "Entorno gráfico de Microsoft Word",
+              "Tipos de selección y Formatos básicos",
+              "Estilos, Interlineado",
+              "Tipos de sangría",
+              "Listas con viñetas, números",
+              "Listas multi nivel"
+            ]
+          },
+          {
+            "temas": [
+              "Insertar imagenes",
+              "Insertar Formas",
+              "Insertar SmarArt",
+              "Bordes y sombrerado",
+              "Bordes de Página"
+            ]
+          },
+          {
+            "temas": [
+              "Color de página",
+              "Marca de agua",
+              "Configurar la pagina",
+              "Columnas",
+              "Insertar gráficos"
+            ]
+          },
+          {
+            "temas": [
+              "Insertar ecuación",
+              "Vínculos externo",
+              "Marcadores",
+              "Vínculos internos",
+              "Combinación de correspondencia"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Microsoft Excel",
+        "semanas": [
+          {
+            "temas": [
+              "Interface gráfica de Microsoft Excel",
+              "Principios matemáticos en Excel",
+              "Fórmulas",
+              "Calculo de una boleta",
+              "Calculo de una factura",
+              "Calculo de una planilla básica"
+            ]
+          },
+          {
+            "temas": [
+              "Funciones estadisticas",
+              "Función SUMA",
+              "Función PROMEDIO",
+              "Función MAX",
+              "Función MIN",
+              "Función MEDIANA"
+            ]
+          },
+          {
+            "temas": [
+              "Función MODA.UNO",
+              "Funciones de conteo",
+              "Función CONTARA",
+              "Función CONTAR",
+              "Función CONTAR.BLANCO",
+              "Función CONTAR.SI",
+              "Insertar Gráficos"
+            ]
+          },
+          {
+            "temas": [
+              "Función SUMAR.SI",
+              "Función PROMEDIO.SI",
+              "Funciones condicionales",
+              "Función SI",
+              "Función SI.CONJUNTO",
+              "Funciones de BÚSQUEDA",
+              "Funciones de BASE DE DATOS"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Microsoft PowerPoint",
+        "semanas": [
+          {
+            "temas": [
+              "Interface de PowerPoint",
+              "Agrear contenido a la presentación",
+              "Diseño de diapositivas",
+              "Los temas de diseño para la diapositiva"
+            ]
+          },
+          {
+            "temas": [
+              "Insertar imágenes",
+              "Insertar formas",
+              "Insertar tablas",
+              "Insertar SmarArt",
+              "Insertar Gráficos"
+            ]
+          },
+          {
+            "temas": [
+              "Transiciones de la diapositiva",
+              "Animaciones de los objetos",
+              "Entrada",
+              "Salida",
+              "Énfasis",
+              "Trayectoria"
+            ]
+          },
+          {
+            "temas": [
+              "Insertar Videos",
+              "Insertar Audio",
+              "Intervalos de las transiciones",
+              "Intervalos de las animaciones",
+              "Vinculos"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

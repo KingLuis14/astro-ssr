@@ -1,12 +1,17 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import { getImageDimensions } from '../../utils/dimesion-Images.ts';
+import { getImageDimensions } from "../../utils/dimesion-Images.ts";
 
 interface Image {
-    placeholder: string;
-    imgName: string;
-    alt: string;
-    formats: string[];
+    placeholder: {
+        imgName: string;
+        formats: string;
+    };
+    original: {
+        imgName: string;
+        alt: string;
+        formats: string[];
+    };
 }
 
 const Picture = {
@@ -27,25 +32,20 @@ interface Props extends HTMLAttributes<"picture">, Image {
 
 const {
     placeholder,
-    imgName,
-    alt,
-    formats,
+    original,
     aspectRatio = "Box",
     classImg,
     class: classes,
     ...attrs
 } = Astro.props;
 
-
-const allFormats = formats.map((format) => ({
-    url: `${imgName}.${format}`,
+const allFormats = original.formats.map((format) => ({
+    url: `${original.imgName}.${format}`,
     type: format,
 }));
 
-const imagePath = allFormats[0].url; // Reemplaza con la ruta de tu imagen local
-
-const dimensions = getImageDimensions('/img/'+imagePath);
-
+const imagePath = allFormats[0].url;
+const dimensions = getImageDimensions("/img/" + imagePath);
 ---
 
 <picture
@@ -55,7 +55,6 @@ const dimensions = getImageDimensions('/img/'+imagePath);
         classes,
     ]}
     style="position: relative"
-   
     {...attrs}
 >
     {
@@ -66,21 +65,22 @@ const dimensions = getImageDimensions('/img/'+imagePath);
     <img
         id="myImage"
         style=`aspect-ratio : ${dimensions.width} / ${dimensions.height}`
-        
-        src={`/img/placeholder_${placeholder}`}
-        class:list={['placeholder',Picture.variants.aspectRatio[aspectRatio], classImg]}
-        {alt}
+        src={`/img/placeholder_${placeholder.imgName}.${placeholder.formats}`}
+        class:list={[
+            "placeholder",
+            Picture.variants.aspectRatio[aspectRatio],
+            classImg,
+        ]}
+        alt={original.alt}
     />
 </picture>
 
 <style is:global>
-
-
-    .placeholder{
-        transition: opacity .5s ease-in-out;
+    .placeholder {
+        transition: opacity 0.5s ease-in-out;
     }
 
-    .original{
+    .original {
         position: absolute;
         left: 0;
         top: 0;
@@ -88,63 +88,43 @@ const dimensions = getImageDimensions('/img/'+imagePath);
         z-index: -20;
     }
 
-    .opacityImage{
+    .opacityImage {
         opacity: 0;
         pointer-events: none;
     }
-    
 </style>
 
-  <script>
+<script>
     const lazyImages = document.querySelectorAll(".lazy-picture");
 
-    const observer = new IntersectionObserver(
-        (entries, observer) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const picture = entry.target;
-                    const sources = picture.querySelectorAll("source");
-                    const img = picture.querySelector("img");
-                    
-                    const newImage = document.createElement('img');
-                    newImage.classList.add("original");
-                    
-                    sources.forEach((source) => {
-                        newImage.srcset = source.dataset.srcset;
-                      
-                    });
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const picture = entry.target;
+                const sources = picture.querySelectorAll("source");
+                const img = picture.querySelector("img") as HTMLImageElement;
 
-                    picture.appendChild(newImage);
+                const newImage = document.createElement("img") as HTMLImageElement;
+                newImage.classList.add("original");
 
-                    newImage.addEventListener("load", () => {
-                        setTimeout(() => {
-                            img.classList.add("opacityImage");
-                        }, 500);
-                    });
+                sources.forEach((source) => {
+                    newImage.srcset = source.dataset.srcset || "";
+                });
 
-                    observer.unobserve(picture);
-                }
-            });
-        }
-    );
+                picture.appendChild(newImage);
+
+                newImage.addEventListener("load", () => {
+                    setTimeout(() => {
+                        img.classList.add("opacityImage");
+                    }, 500);
+                });
+
+                observer.unobserve(picture);
+            }
+        });
+    });
 
     lazyImages.forEach((lazyImage) => {
         observer.observe(lazyImage);
     });
-</script> 
-
-
-<script>
-    const image = document.getElementById('myImage');
-
-    // Function to log the dimensions of the image
-    function logDimensions() {
-        console.log(`Width: ${image.clientWidth}px, Height: ${image.clientHeight}px`);
-    }
-
-    image.addEventListener('loadstart', logDimensions);
-
-    image.addEventListener('load', logDimensions);
-    
-    logDimensions();
 </script>

@@ -1,5 +1,6 @@
 ---
 import PictureImg from "../../components/atoms/PictureImg.astro";
+import Navbar from "../../components/moleculs/Navbar.astro";
 import MainLayout from "../../layout/MainLayout.astro";
 import { getCollection } from "astro:content";
 
@@ -15,19 +16,16 @@ export async function getStaticPaths(){
 };
 
 
-const { titulo, descripcion, modulos, imagenes } = Astro.props.data;
+const { titulo, descripcion, modulos, images } = Astro.props.data;
 ---
 
 <MainLayout>
 
-
-
+        <Navbar slot="navbar"/>
         <h1>{titulo}</h1>
         <PictureImg
-        placeholder={imagenes.base64}
-        imgName={imagenes.original.imgName}
-        alt={imagenes.original.alt}
-        formats={imagenes.original.formats}
+        placeholder={images.placeholder}
+        original={images.original}
     />
         
         <p>{descripcion}</p>

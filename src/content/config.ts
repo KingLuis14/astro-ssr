@@ -12,8 +12,11 @@ const Curso = defineCollection({
       base64: z.string(),
       imagen: z.string()
     }),
-    imagenes: z.object({
-      base64: z.string().optional(),
+    images: z.object({
+      placeholder: z.object({
+        imgName: z.string(),
+        formats: z.string(),
+      }),
       original: z.object({
         imgName: z.string(),
         alt: z.string(),
