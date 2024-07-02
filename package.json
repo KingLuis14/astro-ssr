@@ -8,7 +8,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "node": "node ./dist/server/entry.mjs"
+    "node": "node ./dist/server/entry.mjs",
+    "images": "node src/script/blurImage.js"
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
@@ -16,5 +17,8 @@
     "@astrojs/node": "^8.3.2",
     "astro": "^4.11.3",
     "typescript": "^5.5.2"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.4"
   }
 }

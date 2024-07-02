@@ -8,12 +8,11 @@
         "imagen": "basedatos-banner"
     },
     "imagenes": {
-        "base64": "",
+        "base64": "Base-de-datos.webp",
         "original": {
             "imgName": "Base-de-datos",
             "alt": "imagen de about 1",
-            "type": [
-                "avif",
+            "formats": [
                 "webp"
             ]
         }

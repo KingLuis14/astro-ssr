@@ -1,0 +1,18 @@
+*{
+    box-sizing: border-box;
+}
+
+img{
+    display: block;
+    width: 100%;
+    height: auto;
+    font-style: italic;
+    background-repeat: no-repeat;
+    background-size: cover;
+    shape-margin: 1rem;
+}
+
+picture{
+    display: block;
+    width: 50vmin;
+}

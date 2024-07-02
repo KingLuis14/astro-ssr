@@ -8,13 +8,14 @@
         "imagen": "disenoweb-banner"
     },
     "imagenes": {
-        "base64": "",
+        "base64": "Diseno-Web.webp",
         "original": {
-            "imgName": "Diseño-grafico",
+            "imgName": "Diseno-Web",
             "alt": "imagen de about 1",
-            "type": [
-                "avif",
-                "webp"
+            "formats": [
+                
+                "webp",
+                "avif"
             ]
         }
     },

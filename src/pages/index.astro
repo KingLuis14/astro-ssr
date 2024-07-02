@@ -1,17 +1,11 @@
 ---
+import MainLayout from "../layout/MainLayout.astro";
+
 export const prerender = true;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
+<MainLayout>
+	
+		<img src="/img/Diseno-Web.webp" alt="imagen de pribea">
 		<h1>Astro</h1>
-		<!-- <a href="/curso/"></a> -->
-	</body>
-</html>
+</MainLayout>

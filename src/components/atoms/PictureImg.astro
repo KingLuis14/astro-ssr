@@ -1,0 +1,124 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Image {
+    placeholder: string;
+    imgName: string;
+    alt: string;
+    formats: string[];
+}
+
+const Picture = {
+    variants: {
+        aspectRatio: {
+            Auto: "aspect-ratio-auto",
+            Box: "aspect-ratio-box",
+            Video: "aspect-ratio-video",
+            poster: "aspect-ratio-poster",
+        },
+    },
+};
+
+interface Props extends HTMLAttributes<"picture">, Image {
+    classImg?: string;
+    aspectRatio?: keyof typeof Picture.variants.aspectRatio;
+}
+
+const {
+    placeholder,
+    imgName,
+    alt,
+    formats,
+    aspectRatio = "Box",
+    classImg,
+    class: classes,
+    ...attrs
+} = Astro.props;
+
+
+const allFormats = formats.map((format) => ({
+    url: `${imgName}.${format}`,
+    type: format,
+}));
+---
+
+<picture
+    class:list={[
+        Picture.variants.aspectRatio[aspectRatio],
+        "lazy-picture",
+        classes,
+    ]}
+    style="position: relative"
+    {...attrs}
+>
+    {
+        allFormats.map(({ url, type }) => (
+            <source data-srcset={`/img/${url}`} type={`image/${type}`} />
+        ))
+    }
+    <img
+        src={`/img/placeholder_${placeholder}`}
+        class:list={['placeholder',Picture.variants.aspectRatio[aspectRatio], classImg]}
+        {alt}
+    />
+</picture>
+
+<style is:global>
+
+
+    .placeholder{
+        transition: opacity .5s ease-in-out;
+    }
+
+    .original{
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        z-index: -20;
+    }
+
+    .opacityImage{
+        opacity: 0;
+        pointer-events: none;
+    }
+    
+</style>
+
+<script>
+    const lazyImages = document.querySelectorAll(".lazy-picture");
+
+    const observer = new IntersectionObserver(
+        (entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const picture = entry.target;
+                    const sources = picture.querySelectorAll("source");
+                    const img = picture.querySelector("img");
+                    
+                    const newImage = document.createElement('img');
+                    newImage.classList.add("original");
+                    
+                    sources.forEach((source) => {
+                        newImage.srcset = source.dataset.srcset;
+                        console.log(source.dataset.srcset);
+                    });
+
+                    picture.appendChild(newImage);
+
+                    newImage.addEventListener("load", () => {
+                        setTimeout(() => {
+                            img.classList.add("opacityImage");
+                        }, 500);
+                    });
+
+                    observer.unobserve(picture);
+                }
+            });
+        }
+    );
+
+    lazyImages.forEach((lazyImage) => {
+        observer.observe(lazyImage);
+    });
+</script>

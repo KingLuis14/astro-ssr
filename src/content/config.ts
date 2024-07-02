@@ -17,7 +17,7 @@ const Curso = defineCollection({
       original: z.object({
         imgName: z.string(),
         alt: z.string(),
-        type: z.array(z.string())
+        formats: z.array(z.string())
       })
     }),
     modulos: z.array(z.object({
