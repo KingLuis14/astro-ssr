@@ -1,11 +1,13 @@
 ---
 import MainLayout from "../layout/MainLayout.astro";
-
-export const prerender = true;
+export const prerender = false;
 ---
 
 <MainLayout>
-	
-		<img src="/img/Diseno-Web.webp" alt="imagen de pribea">
-		<h1>Astro</h1>
+	<img src="https://picsum.photos/1600/900" style="height: 60vh; object-fit: cover; width: 100%;" alt="Imagen de prueba aleatoria de Picsum">
+
+
+
+  <h1>Astro</h1>
+  <p>{new Date().getTime()}</p>
 </MainLayout>
